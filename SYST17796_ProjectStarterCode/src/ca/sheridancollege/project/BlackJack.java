@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 import java.util.Scanner;
 /**
- * @Ryan Gilchrist - You miss all the shots you don't take ~ Wayne Gretzky
+ * @Ryan Gilchrist
  */
 public class BlackJack
 {
@@ -37,7 +37,7 @@ public class BlackJack
 
          // Provide user with options (Play, learn rules, exit game)
          System.out.println("----------------------------------------------------------");
-         System.out.println("Welcome, " + name + "! \nPlease choose one of the following: "
+         System.out.println("Welcome, " + player1.getName() + "! \nPlease choose one of the following: "
              + "\nType PLAY to start a new game. \nType RULES for the rules of Black Jack. "
              + "\nType EXIT to terminate the game.");
          System.out.println("----------------------------------------------------------");
@@ -57,6 +57,15 @@ public class BlackJack
          // If statement for when user makes valid choice
          if (choice.equalsIgnoreCase("PLAY")) {
             //call method to play the game
+
+            //Create Dealer
+            Dealer dealer = new Dealer("Dealer");
+
+            // Initiate card totals for player and dealer
+            int playerTotal = 0;
+            int dealerTotal = 0;
+            checkScore(playerTotal, dealerTotal);
+            declareWinner(playerTotal, dealerTotal);
          }
          else if (choice.equalsIgnoreCase("RULES")) {
             System.out.println("Goal: Have a higher score than the dealer. \n"
@@ -102,5 +111,30 @@ public class BlackJack
          isValid = false;
       }
       return isValid;
+   }
+
+   // Checks score to see if player or dealer is DEALT 21 or busts during their turn
+   public static void checkScore (int playerTotal, int dealerTotal)
+   {
+      if (playerTotal > 21 || dealerTotal > 21) { // Checks if bust
+         declareWinner(playerTotal, dealerTotal);
+      } // need to add when variable exists: else if (playerTotal == 21 && playerCard == 2 || dealerTotal == 21 && dealerCards == 2) { declareWinner(playerTotal, dealerTotal); } <- checks if 21 is initially dealt for instant win
+   }
+
+   //Declares winner
+   public static void declareWinner (int playerTotal, int dealerTotal)
+   {
+      System.out.println("Player's card total: " + playerTotal);
+      System.out.println("Dealer's card total: " + dealerTotal);
+
+      if (playerTotal > dealerTotal && playerTotal <= 21) {
+         System.out.println("YOU WIN!");
+      }
+      else if (playerTotal < dealerTotal && dealerTotal <= 21) {
+         System.out.println("DEALER WINS!");
+      }
+      else {
+         System.out.println("It's a Draw!");
+      }
    }
 }

@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 
 /**
- * @Rich Smith at ZenOfProgramming.com
+ * @Ryan Gilchrist
  */
 
 public enum Values

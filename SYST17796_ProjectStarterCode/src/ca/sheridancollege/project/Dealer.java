@@ -4,5 +4,9 @@ package ca.sheridancollege.project;
  */
 public class Dealer extends Player
 {
-//Insert needed code
+   public Dealer (String name)
+   {
+      super(name);
+   }
+
 }

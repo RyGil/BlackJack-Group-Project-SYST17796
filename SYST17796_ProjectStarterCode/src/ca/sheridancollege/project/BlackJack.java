@@ -11,7 +11,7 @@ public class BlackJack
       Scanner input = new Scanner(System.in);
 
       System.out.println("Lets play some Black Jack! \n"
-          + "This game is brought to you by the wonderful people at Java_Jack!");
+          + "This game is brought to you by the wonderful people at Java_Jack! \n");
       System.out.println("Lets start off by getting your name... \nPlease enter your name: ");
 
       String name = input.nextLine();
@@ -56,11 +56,12 @@ public class BlackJack
          else if (choice.equalsIgnoreCase("RULES")) {
             System.out.println("Goal: Have a higher score than the dealer. \n"
                 + "\nHow: Get as close to 21 as possible without going over. "
-                + "\nYou can choose to either 'Hit' or 'Stand'. Hitting will all another card to your hand, while"
+                + "\nYou can choose to either 'Hit' or 'Stand'. Hitting will add another card to your hand, while"
                 + "Standing will end your turn at your current score. \nThe dealer will then take their turn "
                 + "and whoever has the higher score at the end will win.");
 
-            System.out.println("\nNotes: \n1. An Ace can be worth either 1 or 11 points. \n2. A natural is "
+            System.out.println("\nNotes: \n1. An Ace can be worth either 1 or 11 points. \n2. All other cards "
+                + "are worth their respective values. \n3. Jack, Queen, and King are worth 10 points. \n3. A natural is "
                 + "when either the player or dealer is dealt 21 (an Ace + a card worth 10points. \nIn this case, the "
                 + "winner of the game is determined without any turns being taken.");
          }

@@ -26,14 +26,12 @@ public class BlackJack
          name = input.nextLine();
          isValidName = Player.checkName(name);
       }
-
       // Creating Player
       Player player1 = new Player(name);
 
       // Keep game running until user chooses "Exit"
       boolean gameOver = false;
       while (!gameOver) {
-
          // Provide user with options (Play, learn rules, exit game)
          System.out.println("----------------------------------------------------------");
          System.out.println("Welcome, " + player1.getName() + "! \nPlease choose one of the following: "
@@ -55,10 +53,11 @@ public class BlackJack
             //Create Dealer
             Dealer dealer = new Dealer("Dealer");
             // Initiate card totals for player and dealer
-            int playerTotal = 0;
-            int dealerTotal = 0;
+            int playerTotal = 15;
+            int dealerTotal = 20;
             while (playerTotal <= 21) {
                //call deal();
+               System.out.println("---------------------------");
                System.out.println("You currently have: " + /* CARD1
                     * + " and " + CARD2 */ ".\nYour current total is: "
                    + playerTotal + ".\nDealer currently has: " + /* CARD3
@@ -70,6 +69,10 @@ public class BlackJack
                while (!isValidSelection) {
                   playerSelection = input.nextLine();
                   isValidSelection = Player.checkSelection(playerSelection);
+               }
+
+               if (playerSelection.equalsIgnoreCase(MoveControl.Stand.name())) {
+                  Game.dealerTurn(playerTotal, dealerTotal);
                }
 
                Game.checkScore(playerTotal, dealerTotal);

@@ -54,7 +54,7 @@ public class BlackJack
             Dealer dealer = new Dealer("Dealer");
             // Initiate card totals for player and dealer
             int playerTotal = 21;
-            int dealerTotal = 20;
+            int dealerTotal = 18;
             while (playerTotal <= 21) {
                //call deal();
                System.out.println("---------------------------");

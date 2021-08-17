@@ -53,7 +53,7 @@ public class BlackJack
             //Create Dealer
             Dealer dealer = new Dealer("Dealer");
             // Initiate card totals for player and dealer
-            int playerTotal = 15;
+            int playerTotal = 21;
             int dealerTotal = 20;
             while (playerTotal <= 21) {
                //call deal();
@@ -71,12 +71,12 @@ public class BlackJack
                   isValidSelection = Player.checkSelection(playerSelection);
                }
 
+               //Called after everytime a player "hits"
+               Game.checkScore(playerTotal, dealerTotal);
+
                if (playerSelection.equalsIgnoreCase(MoveControl.Stand.name())) {
                   Game.dealerTurn(playerTotal, dealerTotal);
                }
-
-               Game.checkScore(playerTotal, dealerTotal);
-               Game.declareWinner(playerTotal, dealerTotal);
             }
          }
          else if (choice.equalsIgnoreCase("RULES")) {

@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 import java.util.Scanner;
 /**
- * @Ryan Gilchrist
+ * @author Ryan Gilchrist
  */
 public class BlackJack
 {

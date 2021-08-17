@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 
 /**
- * @Rich Smith at ZenOfProgramming.com
+ * @author Ryan Gilchrist
  */
 
 public enum MoveControl

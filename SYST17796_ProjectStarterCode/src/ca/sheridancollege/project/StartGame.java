@@ -1,6 +1,6 @@
 package ca.sheridancollege.project;
 /**
- * @Ryan Gilchrist
+ * @author Ryan Gilchrist
  */
 public class StartGame
 {

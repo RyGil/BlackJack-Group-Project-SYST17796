@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 
 /**
- * @Ryan Gilchrist
+ * @author Ryan Gilchrist
  */
 
 public enum Suits

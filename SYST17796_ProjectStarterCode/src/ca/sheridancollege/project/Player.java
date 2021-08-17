@@ -11,6 +11,7 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author Ryan Gilchrist
  */
 public class Player
 {

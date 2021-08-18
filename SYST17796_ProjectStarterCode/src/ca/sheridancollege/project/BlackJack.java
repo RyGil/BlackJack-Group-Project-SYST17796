@@ -2,6 +2,7 @@ package ca.sheridancollege.project;
 import java.util.Scanner;
 /**
  * @author Ryan Gilchrist
+ * @author Marjorie Carambas 8/16/2021
  */
 public class BlackJack
 {
@@ -49,8 +50,9 @@ public class BlackJack
 
          // If statement for when user makes valid choice
          if (choice.equalsIgnoreCase("PLAY")) {
-            // Create deck
+            // Created object and set its size to 52
             GroupOfCards deck = new GroupOfCards(52);
+            // Create deck
             deck.createDeck();
             deck.shuffle();
             deck.deal();
@@ -62,12 +64,16 @@ public class BlackJack
 //               System.out.println(deck.getCards().get(i).getValue() + " of " + deck.getCards().get(i).getSuit());
 //            }
             //this can be put into method if wanted***
-            //Create Dealer
+            //Create Deale // Initiate card totals for player and dealer
+            int playerTotal = 0;
+            
+            int dealerTotal = 0;r
             Dealer dealer = new Dealer("Dealer");
-            // Initiate card totals for player and dealer
-            int playerTotal = 21;
-            int dealerTotal = 18;
+           
+            
             while (playerTotal <= 21) {
+                playerTotal  = deck.getPlayerHandScore();
+                dealerTotal = deck.getDealerHandScore();
                //call deal();
                System.out.println("---------------------------");
                System.out.println("You currently have: " + Player.playerHand(deck) + ".\nYour current total is: " + playerTotal + ".\nDealer currently has: " + Player.dealerHand(deck) + " showing.");
@@ -101,3 +107,4 @@ public class BlackJack
       }
    }
 }
+

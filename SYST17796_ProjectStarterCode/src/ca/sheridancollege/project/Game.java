@@ -68,21 +68,7 @@ public class Game
           + "winner of the game is determined without any turns being taken.");
    }
 
-   //Automates dealer's turn
-   public static void dealerTurn (int playerTotal, int dealerTotal)
-   {
-      while (dealerTotal <= 16) {
-         System.out.println("---------------------------");
-         System.out.println("Dealer currently has: " + /* print
-              * hand */ ".\nDealer's current total is: " + dealerTotal);
-         System.out.println("Dealer hits!");
-         checkScore(playerTotal, dealerTotal);
-      }
-      if (dealerTotal >= 17) {
-         System.out.println("Dealer Stands!");
-         declareWinner(playerTotal, dealerTotal);
-      }
-   }
+
    // Checks score to see if player or dealer is DEALT 21 or busts during their turn
 
    public static void checkScore (int playerTotal, int dealerTotal)
@@ -92,6 +78,7 @@ public class Game
          declareWinner(playerTotal, dealerTotal);
       } // need to add when variable exists: else if (playerTotal == 21 && playerCard == 2 || dealerTotal == 21 && dealerCards == 2) { declareWinner(playerTotal, dealerTotal); } <- checks if 21 is initially dealt for instant win
    }
+
 
    //Declares winner
    public static void declareWinner (int playerTotal, int dealerTotal)

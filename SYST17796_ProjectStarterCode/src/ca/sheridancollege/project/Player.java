@@ -56,7 +56,20 @@ public class Player
       // WAS ORIGINALLY ABRACT b4 CHANGING PLAYER CLASS
    }
 
-   public static String playerHand (GroupOfCards deck)
+   public int checkAce (int playerTotal, GroupOfCards deck)
+   {
+      for (int i = 0; i < deck.getPlayerHand().size(); i++) {
+         if (deck.getPlayerHand().get(i).getValue() == Values.Ace && playerTotal <= 10) {
+            playerTotal += 10;
+         }
+         else if (deck.getPlayerHand().get(i).getValue() == Values.Ace && playerTotal > 10) {
+            playerTotal -= 10;
+         }
+      }
+      return playerTotal;
+   }
+
+   public String getHand (GroupOfCards deck)
    {
       String hand = "";
       for (int i = 0; i < deck.getPlayerHand().size(); i++) {
@@ -65,14 +78,7 @@ public class Player
       return hand;
    }
 
-   public static String dealerHand (GroupOfCards deck)
-   {
-      String hand = "";
-      for (int i = 0; i < deck.getDealerHand().size(); i++) {
-         hand += " | " + deck.getDealerHand().get(i).getValue() + " of " + deck.getDealerHand().get(i).getSuit() + " | ";
-      }
-      return hand;
-   }
+
 
    //Methods that check validity above (can be moved to appropriate classes)
    public static boolean checkName (String name)
@@ -87,7 +93,7 @@ public class Player
       return validName;
    }
 
-   public static boolean checkChoice (String choice)
+   public boolean checkChoice (String choice)
    {
       boolean isValid = true;
       // If statement to ensure user chooses one of the three options
@@ -102,7 +108,7 @@ public class Player
    }
 
    // Check Hit or Stand selection
-   public static boolean checkSelection (String playerSelection)
+   public boolean checkSelection (String playerSelection)
    {
       boolean isValid = true;
       if (!playerSelection.equalsIgnoreCase(MoveControl.Hit.name())

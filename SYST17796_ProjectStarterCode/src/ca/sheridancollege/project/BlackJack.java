@@ -42,10 +42,10 @@ public class BlackJack
          String choice = input.nextLine();
 
          // Checking validity of user's choice
-         boolean isValidChoice = Player.checkChoice(choice);
+         boolean isValidChoice = player1.checkChoice(choice);
          while (!isValidChoice) {
             choice = input.nextLine();
-            isValidChoice = Player.checkChoice(choice);
+            isValidChoice = player1.checkChoice(choice);
          }
 
          // If statement for when user makes valid choice
@@ -66,34 +66,38 @@ public class BlackJack
             //this can be put into method if wanted***
             //Create Deale // Initiate card totals for player and dealer
             int playerTotal = 0;
-            
-            int dealerTotal = 0;r
+
+            int dealerTotal = 0;
             Dealer dealer = new Dealer("Dealer");
-           
-            
+
+
             while (playerTotal <= 21) {
-                playerTotal  = deck.getPlayerHandScore();
-                dealerTotal = deck.getDealerHandScore();
+               playerTotal = deck.getPlayerHandScore();
+               dealerTotal = deck.getDealerHandScore();
+
+               player1.checkAce(playerTotal, deck);
+               dealer.checkAce(dealerTotal, deck);
+               Game.checkScore(playerTotal, dealerTotal);
+
                //call deal();
                System.out.println("---------------------------");
-               System.out.println("You currently have: " + Player.playerHand(deck) + ".\nYour current total is: " + playerTotal + ".\nDealer currently has: " + Player.dealerHand(deck) + " showing.");
+               System.out.println("You currently have: " + player1.getHand(deck) + ".\nYour current total is: "
+                   + playerTotal + ".\nDealer currently has: | " + deck.getDealerHand().get(0).getValue() + " of "
+                   + deck.getDealerHand().get(1).getSuit() + " | showing.");
                System.out.println("Please choose to either HIT or STAND: ");
                String playerSelection = input.nextLine();
 
-               boolean isValidSelection = Player.checkSelection(playerSelection);
+               boolean isValidSelection = player1.checkSelection(playerSelection);
                while (!isValidSelection) {
                   playerSelection = input.nextLine();
-                  isValidSelection = Player.checkSelection(playerSelection);
+                  isValidSelection = player1.checkSelection(playerSelection);
                }
-
-               //Called after everytime a player "hits"
-               Game.checkScore(playerTotal, dealerTotal);
 
                if (playerSelection.equalsIgnoreCase(MoveControl.Hit.name())) {
                   deck.hit();
                }
                else {
-                  Game.dealerTurn(playerTotal, dealerTotal);
+                  dealer.dealerTurn(playerTotal, dealerTotal);
                }
             }
          }
@@ -102,9 +106,8 @@ public class BlackJack
          }
          else {
             System.out.println("Thanks for playing! Goodbye! :)");
-            gameOver = true; // Ends game
+            gameOver = true; // terminates program
          }
       }
    }
 }
-

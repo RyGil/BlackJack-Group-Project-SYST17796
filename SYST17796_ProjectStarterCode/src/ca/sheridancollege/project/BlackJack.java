@@ -53,11 +53,14 @@ public class BlackJack
             GroupOfCards deck = new GroupOfCards(52);
             deck.createDeck();
             deck.shuffle();
+            deck.deal();
+
+
 
             // THIS IS JUST HOW TO PRINT DECK
-            for (int i = 0; i < deck.getSize(); i++) {
-               System.out.println(deck.getCards().get(i).getValue() + " of " + deck.getCards().get(i).getSuit());
-            }
+//            for (int i = 0; i < deck.getSize(); i++) {
+//               System.out.println(deck.getCards().get(i).getValue() + " of " + deck.getCards().get(i).getSuit());
+//            }
             //this can be put into method if wanted***
             //Create Dealer
             Dealer dealer = new Dealer("Dealer");
@@ -67,10 +70,7 @@ public class BlackJack
             while (playerTotal <= 21) {
                //call deal();
                System.out.println("---------------------------");
-               System.out.println("You currently have: " + /* CARD1
-                    * + " and " + CARD2 */ ".\nYour current total is: "
-                   + playerTotal + ".\nDealer currently has: " + /* CARD3
-                    * + */ " showing.");
+               System.out.println("You currently have: " + Player.playerHand(deck) + ".\nYour current total is: " + playerTotal + ".\nDealer currently has: " + Player.dealerHand(deck) + " showing.");
                System.out.println("Please choose to either HIT or STAND: ");
                String playerSelection = input.nextLine();
 
@@ -83,7 +83,10 @@ public class BlackJack
                //Called after everytime a player "hits"
                Game.checkScore(playerTotal, dealerTotal);
 
-               if (playerSelection.equalsIgnoreCase(MoveControl.Stand.name())) {
+               if (playerSelection.equalsIgnoreCase(MoveControl.Hit.name())) {
+                  deck.hit();
+               }
+               else {
                   Game.dealerTurn(playerTotal, dealerTotal);
                }
             }

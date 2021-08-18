@@ -27,6 +27,11 @@ public class GroupOfCards
    private ArrayList<Card> dealerHand;
    private int size;//the size of the grouping
 //   private Card card;
+   Get all List of Cards
+      for (Suits cardSuit : Suits.values()) {
+         for (Values cardValue : Values.values()) {
+            this.cards.add(new Card(cardValue, cardSuit));
+         }
 
    public void createDeck ()
    {

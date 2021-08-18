@@ -2,6 +2,7 @@ package ca.sheridancollege.project;
 
 /**
  * @author Ryan Gilchrist
+ * @author Marjorie Carambas
  */
 
 public enum Values
@@ -27,7 +28,7 @@ public enum Values
       this.valueOfCard = valueOfCard;
    }
 
-   private int getValue ()
+   public int getValue ()
    {
       return valueOfCard;
    }

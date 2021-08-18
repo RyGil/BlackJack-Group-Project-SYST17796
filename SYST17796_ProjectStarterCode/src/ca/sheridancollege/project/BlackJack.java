@@ -49,6 +49,15 @@ public class BlackJack
 
          // If statement for when user makes valid choice
          if (choice.equalsIgnoreCase("PLAY")) {
+            // Create deck
+            GroupOfCards deck = new GroupOfCards(52);
+            deck.createDeck();
+            deck.shuffle();
+
+            // THIS IS JUST HOW TO PRINT DECK
+            for (int i = 0; i < deck.getSize(); i++) {
+               System.out.println(deck.getCards().get(i).getValue() + " of " + deck.getCards().get(i).getSuit());
+            }
             //this can be put into method if wanted***
             //Create Dealer
             Dealer dealer = new Dealer("Dealer");

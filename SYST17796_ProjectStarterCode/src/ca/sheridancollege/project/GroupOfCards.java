@@ -2,6 +2,7 @@
  * SYST 17796 Project Base code.
  * Students can modify and extend to implement their game.
  * Add your name as an author and the date!
+ *
  * @author Marjorie Carambas 8/16/2021
  */
 package ca.sheridancollege.project;
@@ -52,11 +53,19 @@ public class GroupOfCards
       }
    }
 
-   public void hit ()
+   public void playerHit ()
    {
       for (int i = 0; i < 1; i++) {
          Card temp = cards.remove(i);
          playerHand.add(temp);
+      }
+   }
+
+   public void dealerHit ()
+   {
+      for (int i = 0; i < 1; i++) {
+         Card temp = cards.remove(i);
+         dealerHand.add(temp);
       }
    }
 
@@ -79,43 +88,41 @@ public class GroupOfCards
    {
       return playerHand;
    }
-   
-   public  int getPlayerHandScore ()
+
+   public int getPlayerHandScore ()
    {
-       int values = 0;
-  
-       for (Card c : playerHand)
-       {
-           
-            values += c.getValue().getValue();
-       }
-       
-       
-       
-       return values ;
+      int values = 0;
+
+      for (Card c : playerHand) {
+
+         values += c.getValue().getValue();
+      }
+
+
+
+      return values;
    }
 
    public ArrayList<Card> getDealerHand ()
    {
       return dealerHand;
    }
-   
-    public  int getDealerHandScore ()
+
+   public int getDealerHandScore ()
    {
-       int values = 0;
-  
-       for (Card c : dealerHand)
-       {
-           
-            values += c.getValue().getValue();
-       }
-       
-       
-       
-       return values ;
+      int values = 0;
+
+      for (Card c : dealerHand) {
+
+         values += c.getValue().getValue();
+      }
+
+
+
+      return values;
    }
-   
-   
+
+
 
    public void shuffle ()
    {

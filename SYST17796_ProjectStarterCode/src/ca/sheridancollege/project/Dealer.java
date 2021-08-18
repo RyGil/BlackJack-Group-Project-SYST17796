@@ -10,13 +10,14 @@ public class Dealer extends Player
    }
 
    //Automates dealer's turn
-   public void dealerTurn (int playerTotal, int dealerTotal)
+   public void dealerTurn (int playerTotal, int dealerTotal, Dealer dealer, GroupOfCards deck)
    {
       while (dealerTotal <= 16) {
          System.out.println("---------------------------");
-         System.out.println("Dealer currently has: " + /* print
-              * hand */ ".\nDealer's current total is: " + dealerTotal);
+         System.out.println("Dealer currently has: | " + dealer.getHand(deck) + " | \nDealer's current total is: " + dealerTotal);
          System.out.println("Dealer hits!");
+         deck.dealerHit();
+         dealerTotal = deck.getDealerHandScore();
          Game.checkScore(playerTotal, dealerTotal);
       }
       if (dealerTotal >= 17) {

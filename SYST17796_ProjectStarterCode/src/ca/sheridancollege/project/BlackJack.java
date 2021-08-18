@@ -94,10 +94,10 @@ public class BlackJack
                }
 
                if (playerSelection.equalsIgnoreCase(MoveControl.Hit.name())) {
-                  deck.hit();
+                  deck.playerHit();
                }
                else {
-                  dealer.dealerTurn(playerTotal, dealerTotal);
+                  dealer.dealerTurn(playerTotal, dealerTotal, dealer, deck);
                }
             }
          }

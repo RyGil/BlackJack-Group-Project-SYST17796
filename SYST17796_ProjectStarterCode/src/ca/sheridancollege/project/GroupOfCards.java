@@ -22,6 +22,8 @@ public class GroupOfCards
 
    //The group of cards, stored in an ArrayList
    private ArrayList<Card> cards;
+   private ArrayList<Card> playerHand;
+   private ArrayList<Card> dealerHand;
    private int size;//the size of the grouping
 //   private Card card;
 
@@ -32,6 +34,28 @@ public class GroupOfCards
          for (Suits cardSuit : Suits.values()) {
             cards.add(new Card(cardValue, cardSuit));
          }
+      }
+   }
+
+   public void deal ()
+   {
+      playerHand = new ArrayList<>();
+      for (int i = 0; i < 2; i++) {
+         Card temp = cards.remove(i);
+         playerHand.add(temp);
+      }
+      dealerHand = new ArrayList<>();
+      for (int i = 0; i < 2; i++) {
+         Card temp = cards.remove(i);
+         dealerHand.add(temp);
+      }
+   }
+
+   public void hit ()
+   {
+      for (int i = 0; i < 1; i++) {
+         Card temp = cards.remove(i);
+         playerHand.add(temp);
       }
    }
 
@@ -48,6 +72,16 @@ public class GroupOfCards
    public ArrayList<Card> getCards ()
    {
       return cards;
+   }
+
+   public ArrayList<Card> getPlayerHand ()
+   {
+      return playerHand;
+   }
+
+   public ArrayList<Card> getDealerHand ()
+   {
+      return dealerHand;
    }
 
    public void shuffle ()
@@ -70,5 +104,6 @@ public class GroupOfCards
    {
       this.size = size;
    }
+
 
 }//end class

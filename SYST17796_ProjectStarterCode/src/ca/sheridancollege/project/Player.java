@@ -56,6 +56,24 @@ public class Player
       // WAS ORIGINALLY ABRACT b4 CHANGING PLAYER CLASS
    }
 
+   public static String playerHand (GroupOfCards deck)
+   {
+      String hand = "";
+      for (int i = 0; i < deck.getPlayerHand().size(); i++) {
+         hand += " | " + deck.getPlayerHand().get(i).getValue() + " of " + deck.getPlayerHand().get(i).getSuit() + " | ";
+      }
+      return hand;
+   }
+
+   public static String dealerHand (GroupOfCards deck)
+   {
+      String hand = "";
+      for (int i = 0; i < deck.getDealerHand().size(); i++) {
+         hand += " | " + deck.getDealerHand().get(i).getValue() + " of " + deck.getDealerHand().get(i).getSuit() + " | ";
+      }
+      return hand;
+   }
+
    //Methods that check validity above (can be moved to appropriate classes)
    public static boolean checkName (String name)
    {

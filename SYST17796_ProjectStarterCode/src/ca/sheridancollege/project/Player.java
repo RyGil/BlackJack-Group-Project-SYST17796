@@ -11,7 +11,7 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
- * @author Ryan Gilchrist
+ * @author Ryan Gilchrist 8/16/2021
  */
 public class Player
 {
@@ -46,29 +46,18 @@ public class Player
       this.name = name;
    }
 
-   /**
-    * The method to be overridden when you subclass the Player class with your
-    * specific type of Player and filled in
-    * with logic to play your game.
-    */
-   public void play ()
-   {
-      // WAS ORIGINALLY ABRACT b4 CHANGING PLAYER CLASS
-   }
-
-   public int checkAce (int playerTotal, GroupOfCards deck)
+   // Checks if player has an ace and assigns appropriate value (1 or 11)
+   public int checkAce (int playerPoints, GroupOfCards deck)
    {
       for (int i = 0; i < deck.getPlayerHand().size(); i++) {
-         if (deck.getPlayerHand().get(i).getValue() == Values.Ace && playerTotal <= 10) {
-            playerTotal += 10;
-         }
-         else if (deck.getPlayerHand().get(i).getValue() == Values.Ace && playerTotal > 10) {
-            playerTotal -= 10;
+         if (deck.getPlayerHand().get(i).getValue() == Values.Ace && playerPoints <= 10) {
+            playerPoints += 10;
          }
       }
-      return playerTotal;
+      return playerPoints;
    }
 
+   // gets player's hand and converts to string
    public String getHand (GroupOfCards deck)
    {
       String hand = "";
@@ -78,9 +67,7 @@ public class Player
       return hand;
    }
 
-
-
-   //Methods that check validity above (can be moved to appropriate classes)
+   //Methods that checks validity of player name
    public static boolean checkName (String name)
    {
       boolean validName = true;
@@ -93,6 +80,7 @@ public class Player
       return validName;
    }
 
+   // Method to check validity of player's menu choice
    public boolean checkChoice (String choice)
    {
       boolean isValid = true;
@@ -107,7 +95,7 @@ public class Player
       return isValid;
    }
 
-   // Check Hit or Stand selection
+   // Method to check validity of player's move selection
    public boolean checkSelection (String playerSelection)
    {
       boolean isValid = true;
@@ -119,5 +107,4 @@ public class Player
       }
       return isValid;
    }
-
 }

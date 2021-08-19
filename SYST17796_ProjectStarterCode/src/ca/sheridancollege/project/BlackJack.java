@@ -1,7 +1,7 @@
 package ca.sheridancollege.project;
 import java.util.Scanner;
 /**
- * @author Ryan Gilchrist
+ * @author Ryan Gilchrist 8/16/2021
  * @author Marjorie Carambas 8/16/2021
  */
 public class BlackJack
@@ -33,6 +33,7 @@ public class BlackJack
       // Keep game running until user chooses "Exit"
       boolean gameOver = false;
       while (!gameOver) {
+
          // Provide user with options (Play, learn rules, exit game)
          System.out.println("----------------------------------------------------------");
          System.out.println("Welcome, " + player1.getName() + "! \nPlease choose one of the following: "
@@ -50,36 +51,33 @@ public class BlackJack
 
          // If statement for when user makes valid choice
          if (choice.equalsIgnoreCase("PLAY")) {
-            // Created object and set its size to 52
+            // Created deck object and set it to 52
             GroupOfCards deck = new GroupOfCards(52);
-            // Create deck
+            // Create, shuffle, and deal dck
             deck.createDeck();
             deck.shuffle();
             deck.deal();
 
-
-
-            // THIS IS JUST HOW TO PRINT DECK
-//            for (int i = 0; i < deck.getSize(); i++) {
-//               System.out.println(deck.getCards().get(i).getValue() + " of " + deck.getCards().get(i).getSuit());
-//            }
-            //this can be put into method if wanted***
-            //Create Deale // Initiate card totals for player and dealer
+            // Initiate card totals for player and dealer
             int playerTotal = 0;
-
             int dealerTotal = 0;
+            //create dealer
             Dealer dealer = new Dealer("Dealer");
 
-
+            // Loop to keep game running
             while (playerTotal <= 21) {
-               playerTotal = deck.getPlayerHandScore();
-               dealerTotal = deck.getDealerHandScore();
+               // Getting dealt scores and assigning appropriate value to Ace (1 or 11)
+               int playerPoints = deck.getPlayerHandScore();
+               int dealerPoints = deck.getDealerHandScore();
+               playerTotal = player1.checkAce(playerPoints, deck);
+               dealerTotal = dealer.checkAce(dealerPoints, deck);
 
-               player1.checkAce(playerTotal, deck);
-               dealer.checkAce(dealerTotal, deck);
                Game.checkScore(playerTotal, dealerTotal);
+               if (playerTotal > 21) {
+                  break;
+               }
 
-               //call deal();
+               // Printing Hand of player, player points, and 1 of the two dealer cards
                System.out.println("---------------------------");
                System.out.println("You currently have: " + player1.getHand(deck) + ".\nYour current total is: "
                    + playerTotal + ".\nDealer currently has: | " + deck.getDealerHand().get(0).getValue() + " of "
@@ -87,17 +85,20 @@ public class BlackJack
                System.out.println("Please choose to either HIT or STAND: ");
                String playerSelection = input.nextLine();
 
+               // Checking if user made a valid selection
                boolean isValidSelection = player1.checkSelection(playerSelection);
                while (!isValidSelection) {
                   playerSelection = input.nextLine();
                   isValidSelection = player1.checkSelection(playerSelection);
                }
 
+               // If statement to determine game play based on user's move choice
                if (playerSelection.equalsIgnoreCase(MoveControl.Hit.name())) {
                   deck.playerHit();
                }
                else {
                   dealer.dealerTurn(playerTotal, dealerTotal, dealer, deck);
+                  break;
                }
             }
          }

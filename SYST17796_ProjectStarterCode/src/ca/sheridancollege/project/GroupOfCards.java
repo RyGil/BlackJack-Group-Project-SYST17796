@@ -3,6 +3,7 @@
  * Students can modify and extend to implement their game.
  * Add your name as an author and the date!
  *
+ * @author Ryan Gilchrist 8/16/2021
  * @author Marjorie Carambas 8/16/2021
  */
 package ca.sheridancollege.project;
@@ -27,8 +28,8 @@ public class GroupOfCards
    private ArrayList<Card> playerHand;
    private ArrayList<Card> dealerHand;
    private int size;//the size of the grouping
-//   private Card card;
 
+   // Method to create deck
    public void createDeck ()
    {
       cards = new ArrayList<>();
@@ -39,6 +40,7 @@ public class GroupOfCards
       }
    }
 
+   // Method to deal 2 cards to each player
    public void deal ()
    {
       playerHand = new ArrayList<>();
@@ -53,6 +55,7 @@ public class GroupOfCards
       }
    }
 
+   // Method to add 1 card to player hand when they hit
    public void playerHit ()
    {
       for (int i = 0; i < 1; i++) {
@@ -61,6 +64,7 @@ public class GroupOfCards
       }
    }
 
+   // Method to add 1 card to dealer hand when they hit
    public void dealerHit ()
    {
       for (int i = 0; i < 1; i++) {
@@ -97,9 +101,6 @@ public class GroupOfCards
 
          values += c.getValue().getValue();
       }
-
-
-
       return values;
    }
 
@@ -116,9 +117,6 @@ public class GroupOfCards
 
          values += c.getValue().getValue();
       }
-
-
-
       return values;
    }
 

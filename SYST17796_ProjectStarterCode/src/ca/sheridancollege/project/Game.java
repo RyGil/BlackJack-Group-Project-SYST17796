@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
- * @author Ryan Gilchrist
+ * @author Ryan Gilchrist 8/16/2021
  */
 public class Game
 {
@@ -69,18 +69,16 @@ public class Game
    }
 
 
-   // Checks score to see if player or dealer is DEALT 21 or busts during their turn
-
+   // Checks score to see if player or dealer busts then declares the winner
    public static void checkScore (int playerTotal, int dealerTotal)
    {
       if (playerTotal > 21 || dealerTotal > 21) { // Checks if bust
          System.out.println("BUST!");
          declareWinner(playerTotal, dealerTotal);
-      } // need to add when variable exists: else if (playerTotal == 21 && playerCard == 2 || dealerTotal == 21 && dealerCards == 2) { declareWinner(playerTotal, dealerTotal); } <- checks if 21 is initially dealt for instant win
+      }
    }
 
-
-   //Declares winner
+   //Declares winner of the game
    public static void declareWinner (int playerTotal, int dealerTotal)
    {
       System.out.println("Player's card total: " + playerTotal);
@@ -89,30 +87,17 @@ public class Game
       if (playerTotal > dealerTotal && playerTotal <= 21) {
          System.out.println("YOU WIN!");
       }
+      else if (playerTotal < 21 && dealerTotal > 21) {
+         System.out.println("YOU WIN!");
+      }
       else if (playerTotal < dealerTotal && dealerTotal <= 21) {
+         System.out.println("DEALER WINS!");
+      }
+      else if (playerTotal > 21 && dealerTotal < 21) {
          System.out.println("DEALER WINS!");
       }
       else {
          System.out.println("It's a Draw!");
       }
    }
-
-   /**
-    * Play the game. This might be one method or many method calls depending on
-    * your game.
-    */
-   public void play ()
-   {
-      //THIS WAS ORIGINALLY ABSTRACT
-   }
-
-   /**
-    * When the game is over, use this method to declare and display a winning
-    * player.
-    */
-   public void declareWinner ()
-   {
-      //THIS WAS ORIGINALLY ABSTRACT
-   }
-
 }//end class

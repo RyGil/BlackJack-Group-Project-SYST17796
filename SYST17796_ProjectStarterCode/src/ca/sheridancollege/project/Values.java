@@ -1,8 +1,10 @@
 package ca.sheridancollege.project;
 
 /**
- * @author Ryan Gilchrist
+ * @author Ryan Gilchrist 8/16/2021
  * @author Marjorie Carambas
+ *
+ * Enums for card Face values and assigning point values
  */
 
 public enum Values

@@ -11,6 +11,7 @@ package ca.sheridancollege.project;
  * game. Students wishing to add to the code should remember to add themselves
  * as a modifier.
  *
+ * @author Ryan Gilchrist 8/16/2021
  * @author dancye
  */
 public class Card
@@ -44,17 +45,5 @@ public class Card
    {
       this.suit = suit;
    }
-
-
-   /**
-    * Students should implement this method for their specific children classes
-    *
-    * @return a String representation of a card. Could be an UNO card, a regular
-    * playing card etc.
-    */
-//    @Override
-//    public  String toString() {
-//       
-//    }
 
 }
